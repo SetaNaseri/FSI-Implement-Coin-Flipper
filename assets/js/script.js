@@ -1,27 +1,69 @@
-// TODO: Declare any global variables we need
+
+let flipButton = document.getElementById("button-flip");
+let clearButton = document.getElementById("button-clear");
+let image = document.getElementById("coin");
+let headRolls = 0
+let tailRolls = 0 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    // This is just a sanity check to make sure your JavaScript script is getting loaded
-    // You can remove it once you see it in your browser console in the developer tools
-    console.log('Hi')
+    flipButton.addEventListener('click', () => {
+    let heads = Math.random() < 0.5
+    if (heads) {
+        image.src = 'assets/images/penny-heads.jpg'
+        document.getElementById('message').textContent = 'You Flipped Heads!'
 
-    // TODO: Add event listener and handler for flip and clear buttons
+        headRolls += 1
+    }
+    else {
+        image.src = 'assets/images/penny-tails.jpg'
+        document.getElementById('message').textContent = 'You Flipped Tails!'
 
-    // Flip Button Click Handler
-        // TODO: Determine flip outcome
-        // TODO: Update image and status message in the DOM
+        tailRolls +=1
+    }
 
-        // Update the scorboard
-        // TODO: Calculate the total number of rolls/flips
-        // Make variables to track the percentages of heads and tails
-        // TODO: Use the calculated total to calculate the percentages
-        // HINT: Make sure not to divide by 0! (if total is 0, percent will be 0 as well)
-        // TODO: Update the display of each table cell
+     
+     let total = headRolls + tailRolls;
 
+     let tailPercent = 0
+     let headPercent = 0
+    
+     if (total > 0) {
 
-    // Clear Button Click Handler
-        // TODO: Reset global variables to 0
-        // TODO: Update the scoreboard (same logic as in flip button click handler)
+        headPercent = Math.round((headRolls / total) * 100)
+        tailPercent = Math.round((tailRolls / total) * 100)
+    }
+     
+     
+     document.getElementById('heads').textContent = headRolls
+     document.getElementById('heads-percent').textContent = headPercent + '%'
+     document.getElementById('tails').textContent = tailRolls
+     document.getElementById('tails-percent').textContent = tailPercent + '%'
+ 
+    })
 
-})
+    
+    clearButton.addEventListener('click', function() {
+        headRolls = 0
+        tailRolls = 0
+
+        document.getElementById('message').textContent = 'Let\'s Get Rolling!';
+
+        let total = headRolls + tailRolls;
+
+     let tailPercent = 0
+     let headPercent = 0
+    
+     if (total > 0) {
+
+        headPercent = Math.round((headRolls / total) * 100)
+        tailPercent = Math.round((tailRolls / total) * 100)
+    }
+     
+     
+        document.getElementById('heads').textContent = headRolls
+        document.getElementById('heads-percent').textContent = headPercent + '%'
+        document.getElementById('tails').textContent = tailRolls
+        document.getElementById('tails-percent').textContent = tailPercent + '%'
+        })
+
+// })
