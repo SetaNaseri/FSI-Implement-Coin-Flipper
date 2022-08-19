@@ -66,4 +66,3 @@ let tailRolls = 0
         document.getElementById('tails-percent').textContent = tailPercent + '%'
         })
 
-// })
